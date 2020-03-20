@@ -43,17 +43,19 @@ function addList(ev) {
           name: data[i].show.name
         });
       }
+      paintSeries();
     });
   console.log(listSeries);
-  paintSeries();
 }
 
 // PENDIENTE ARREGLAR PINTAR
 function paintSeries() {
-  listSection.innerHTML += '<article>';
-  listSection.innerHTML += '<img src="' + listSeries[0].image + '" alt="poster" />';
-  listSection.innerHTML += '<h3>' + listSeries[0].name + '</h3>';
-  listSection.innerHTML += '</article>';
+  for (let i = 0; i < listSeries.length; i++) {
+    listSection.innerHTML += '<article>';
+    listSection.innerHTML += '<img src="' + listSeries[i].image + '" alt="poster" />';
+    listSection.innerHTML += '<h3>' + listSeries[i].name + '</h3>';
+    listSection.innerHTML += '</article>';
+  }
 }
 // 2. Listeners
 inputSearch.addEventListener('keyup', getValue);
