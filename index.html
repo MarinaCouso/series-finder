@@ -6,20 +6,22 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/main.css" />
   </head>
-  <body>
-    <header>
+  <body class="body">
+    <header class="body__header">
       <h1>Buscador de series</h1>
     </header>
-    <main>
-      <form class="js-form" action="post">
+    <main class="main">
+      <form class="js-form main__form" action="post">
         <input class="js-inputSearch" type="text" name="inputSearch" id="inputSearch" />
         <input class="js-btnSearch" type="submit" value="Search" />
       </form>
-      <section>
+      <section class="main__favorites">
         <h2>Mis series favoritas</h2>
+        <div class="js-favoritesSection"></div>
       </section>
-      <section class="js-listSection">
+      <section class="main__list">
         <h2>Listado de películas</h2>
+        <div class="js-listSection"></div>
       </section>
     </main>
     <script type="text/javascript" src="./js/main.js"></script>
