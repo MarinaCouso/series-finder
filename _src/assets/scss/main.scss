@@ -2,6 +2,7 @@
   font-family: sans-serif;
   background-color: aquamarine;
   color: purple;
+  padding: 1.5rem;
 }
 .body__header {
   display: flex;
@@ -10,25 +11,94 @@
 }
 .main {
   display: grid;
-}
-.main__form {
-  grid-template-columns: 1/13;
-}
-.main__list {
-  grid-template-columns: 1/13;
-}
-.main__favorites {
-  grid-template-columns: 1/13;
-}
-.article {
-  border: purple 1rem solid;
-}
-
-@media all and (min-width: 768px) {
-  .main__list {
-    grid-template-columns: 1/5;
+  grid-template-columns: 1fr 1fr;
+  &__form {
+    grid-column: 1/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    &__input {
+      margin: 0.8rem;
+      border: transparent;
+      border-radius: 0.5rem;
+      background-color: honeydew;
+      height: 1.5rem;
+      text-align: center;
+      &:focus {
+        background-color: honeydew;
+        color: purple;
+        font-weight: bold;
+        border: transparent;
+        border-radius: 0.5rem;
+      }
+    }
+    &__btn {
+      background-color: purple;
+      border: transparent;
+      color: honeydew;
+      font-family: sans-serif;
+      font-weight: bold;
+      height: 1.8rem;
+      width: 5rem;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      &:hover {
+        background-color: honeydew;
+        color: purple;
+      }
+    }
   }
-  .main__favorites {
-    grid-template-columns: 6/13;
+  &__list {
+    grid-column: 1/3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    &__title {
+      width: 20rem;
+    }
+    &__div {
+      display: flex;
+      flex-direction: column;
+      &__article {
+        border: grey 0.2rem solid;
+        margin: 0.5rem;
+        width: 15rem;
+        background-color: honeydew;
+      }
+    }
+  }
+  &__favorites {
+    grid-column: 1/3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    &__title {
+      width: 20rem;
+    }
+    &__div {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  @media all and (min-width: 768px) {
+    &__list {
+      grid-column: 2/3;
+      &__div {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        &__article {
+          width: 10rem;
+        }
+      }
+    }
+    &__favorites {
+      grid-column: 1/2;
+      display: flex;
+      align-content: center;
+    }
   }
 }

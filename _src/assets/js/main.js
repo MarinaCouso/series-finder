@@ -64,7 +64,7 @@ function paintSeries() {
     // listSection.innerHTML += `<img src="${listSeries[i].image}" alt="Imagen de la serie ${listSeries[i].name}" />`;
     // listSection.innerHTML += `<h3>${listSeries[i].name}</h3>`;
     // listSection.innerHTML += `</article>`;
-    listSection.innerHTML += `<article class="js-article article" id="${listSeries[i].id}"><img src="${listSeries[i].image}" alt="Imagen de la serie ${listSeries[i].name}" /><h3>${listSeries[i].name}</h3></article>`;
+    listSection.innerHTML += `<article class="js-article main__list__div__article" id="${listSeries[i].id}"><img src="${listSeries[i].image}" alt="Imagen de la serie ${listSeries[i].name}" /><h3>${listSeries[i].name}</h3></article>`;
   }
 }
 
