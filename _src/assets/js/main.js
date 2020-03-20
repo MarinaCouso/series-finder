@@ -2,7 +2,7 @@
 
 // 1. Variables y arrays
 let listSeries = [];
-let favoritesSeries = [];
+let favoriteSeries = [];
 
 const inputSearch = document.querySelector('.js-inputSearch');
 const btnSearch = document.querySelector('.js-btnSearch');
@@ -77,15 +77,31 @@ function listenToList() {
   }
 }
 // 4ª: Añadir de la lista de favoritas
+function paintFavorites() {
+  favoritesSection.innerHTML = '';
+  let codeHTML = '';
+  for (let i = 0; i < favoriteSeries.length; i++) {
+    codeHTML += `<article class="js-article main__list__div__article" id="${favoriteSeries[i].id}">`;
+    codeHTML += `<img src="${favoriteSeries[i].image}" alt="Imagen de la serie ${favoriteSeries[i].name}" />`;
+    codeHTML += `<h3>${favoriteSeries[i].name}</h3>`;
+    codeHTML += `</article>`;
+  }
+  favoritesSection.innerHTML += codeHTML;
+}
+
 let clickListId = [];
 function addToFavorites(ev) {
   clickListId = parseInt(ev.currentTarget.id);
   let clickedSerie = {};
+  debugger;
   for (let i = 0; i < listSeries.length; i++) {
     if (listSeries[i].id === clickListId) {
       clickedSerie = listSeries[i];
     }
   }
+  favoriteSeries.push(clickedSerie);
+  console.log(clickedSerie);
+  paintFavorites();
 }
 // 2. Listeners
 inputSearch.addEventListener('keyup', getValue);
