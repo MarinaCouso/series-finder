@@ -72,9 +72,6 @@ function listenToList() {
   }
 }
 // 6ª:  Guardar en localStorage (y añadir al principio leer localStorage)
-const setLocalStorage = () => {
-  localStorage.setItem('favorites', JSON.stringify(favoriteSeries));
-};
 
 const getLocalStorage = () => {
   const favoriteSeriesString = localStorage.getItem('favorites');
@@ -84,6 +81,10 @@ const getLocalStorage = () => {
   }
 };
 getLocalStorage();
+
+const setLocalStorage = () => {
+  localStorage.setItem('favorites', JSON.stringify(favoriteSeries));
+};
 // 5ª: Pintar series en favoritas
 function paintFavorites() {
   favoritesSection.innerHTML = '';
@@ -95,6 +96,7 @@ function paintFavorites() {
     codeHTML += `<input class="js-btnRemove div__article__btnRemove" type="submit" value="x" id="${i}"/>`;
     codeHTML += `</article>`;
   }
+  codeHTML += '<input class="js-btnRemoveAll div__btnRemoveAll" type="submit" value="Limpiar lista" />';
   favoritesSection.innerHTML += codeHTML;
   listenToFavoriteRemove();
 }
@@ -126,7 +128,6 @@ function addToFavorites(ev) {
   }
 
   setLocalStorage();
-  paintFavorites();
 }
 // 7ª: Quitar de la lista de favoritas
 
@@ -139,12 +140,19 @@ function listenToFavoriteRemove() {
 }
 
 function removeFavorites(ev) {
-  let clickedBtnRemoveId = ev.currentTarget.id;
-  console.log(clickedBtnRemoveId);
+  let clickedBtnRemoveId = parseInt(ev.currentTarget.id);
 
+  let clickedFavoriteSerie = {};
   for (let i = 0; i < favoriteSeries.length; i++) {
     if (i === clickedBtnRemoveId) {
-      favoriteSeries[i].classList.add('remove');
+      clickedFavoriteSerie = favoriteSeries[i];
+    }
+  }
+  let serieToRemove = '';
+  for (let i = 0; i < favoriteSeries.length; i++) {
+    if (favoriteSeries[i].id === clickedFavoriteSerie.id) {
+      serieToRemove = ev.currentTarget.parentElement;
+      serieToRemove.parentElement.removeChild(serieToRemove);
     }
   }
   setLocalStorage();
