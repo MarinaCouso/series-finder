@@ -92,7 +92,7 @@ function paintFavorites() {
     codeHTML += `<article class="js-article div__article" id="${favoriteSeries[i].id}">`;
     codeHTML += `<img class="div__article__img" src="${favoriteSeries[i].image}" alt="Imagen de la serie ${favoriteSeries[i].name}" />`;
     codeHTML += `<h3 class="div__article__name">${favoriteSeries[i].name}</h3>`;
-    codeHTML += `<input class="js-btnRemove div__article__btnRemove" type="submit" value="x" />`;
+    codeHTML += `<input class="js-btnRemove div__article__btnRemove" type="submit" value="x" id="${i}"/>`;
     codeHTML += `</article>`;
   }
   favoritesSection.innerHTML += codeHTML;
@@ -135,18 +135,18 @@ function listenToFavoriteRemove() {
   const btnRemove = document.querySelectorAll('.js-btnRemove');
   for (const btn of btnRemove) {
     btn.addEventListener('click', removeFavorites);
-    console.log(btn);
   }
 }
 
 function removeFavorites(ev) {
-  let clickedSerie = ev.currentTarget;
-  console.log(clickedSerie);
-  // for (let i = 0; i < favoriteSeries.length; i++) {
-  //   if (favoriteSeries[i].id === clickListId) {
-  //     clickedSerie = favoriteSeries[i];
-  //   }
-  // }
+  let clickedBtnRemoveId = ev.currentTarget.id;
+  console.log(clickedBtnRemoveId);
+
+  for (let i = 0; i < favoriteSeries.length; i++) {
+    if (i === clickedBtnRemoveId) {
+      favoriteSeries[i].classList.add('remove');
+    }
+  }
   setLocalStorage();
 }
 
