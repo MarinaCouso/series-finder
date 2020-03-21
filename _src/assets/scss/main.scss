@@ -78,11 +78,33 @@
     &__title {
       width: 20rem;
     }
-    &__div {
+  }
+  .div {
+    display: flex;
+    flex-direction: column;
+    &__article {
+      background-color: transparent;
+      margin-bottom: 0.5rem;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      &__btnRemove {
+        background-color: black;
+        color: honeydew;
+        border: transparent;
+        border-radius: 1rem;
+        margin: 0.5rem;
+        font-weight: bold;
+      }
+      &__img {
+        height: 7rem;
+      }
+      &__name {
+        margin: 0.2rem;
+      }
     }
   }
+
   @media all and (min-width: 768px) {
     &__list {
       grid-column: 2/3;
@@ -90,9 +112,6 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        &__article {
-          width: 10rem;
-        }
       }
     }
     &__favorites {
@@ -101,4 +120,11 @@
       align-content: center;
     }
   }
+}
+.reverseColor {
+  color: honeydew;
+  background-color: purple;
+}
+.remove {
+  display: none;
 }
