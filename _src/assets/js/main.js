@@ -14,6 +14,21 @@ const favoritesSection = document.querySelector('.js-favoritesSection');
 
 // -----
 
+// 6ª:  Guardar en localStorage (y añadir al principio leer localStorage)
+
+const getLocalStorage = () => {
+  const favoriteSeriesString = localStorage.getItem('favorites');
+  if (favoriteSeriesString !== null) {
+    favoriteSeries = JSON.parse(favoriteSeriesString);
+    paintFavorites();
+  }
+};
+getLocalStorage();
+
+const setLocalStorage = () => {
+  localStorage.setItem('favorites', JSON.stringify(favoriteSeries));
+  localStorage.setItem('list', JSON.stringify(listSeries));
+};
 // 1ª: Escuchar la búsqueda y obtener datos de la API
 
 function preventDefault(ev) {
@@ -71,20 +86,16 @@ function listenToList() {
     article.addEventListener('click', addToFavorites);
   }
 }
-// 6ª:  Guardar en localStorage (y añadir al principio leer localStorage)
 
-const getLocalStorage = () => {
-  const favoriteSeriesString = localStorage.getItem('favorites');
-  if (favoriteSeriesString !== null) {
-    favoriteSeries = JSON.parse(favoriteSeriesString);
-    paintFavorites();
-  }
-};
-getLocalStorage();
-
-const setLocalStorage = () => {
-  localStorage.setItem('favorites', JSON.stringify(favoriteSeries));
-};
+// BONUS: Limpiar lista favoritas
+// function listenToFavoriteRemoveAll() {
+//   // const btnRemoveAll = document.querySelector('.js-btnRemoveAll');
+//   // function cleanFavoriteList() {
+//   //   favoriteSeries = [];
+//   //   paintFavorites();
+//   // }
+//   // btnRemoveAll.addEventListener('click', cleanFavoriteList);
+// }
 // 5ª: Pintar series en favoritas
 function paintFavorites() {
   favoritesSection.innerHTML = '';
@@ -93,12 +104,13 @@ function paintFavorites() {
     codeHTML += `<article class="js-article div__article" id="${favoriteSeries[i].id}">`;
     codeHTML += `<img class="div__article__img" src="${favoriteSeries[i].image}" alt="Imagen de la serie ${favoriteSeries[i].name}" />`;
     codeHTML += `<h3 class="div__article__name">${favoriteSeries[i].name}</h3>`;
-    codeHTML += `<input class="js-btnRemove div__article__btnRemove" type="submit" value="x" id="${i}"/>`;
+    codeHTML += `<input class="js-btnRemove div__article__btnRemove" type="submit" value="x" id="${favoriteSeries[i].id}"/>`;
     codeHTML += `</article>`;
   }
   codeHTML += '<input class="js-btnRemoveAll div__btnRemoveAll" type="submit" value="Limpiar lista" />';
   favoritesSection.innerHTML += codeHTML;
   listenToFavoriteRemove();
+  // listenToFavoriteRemoveAll();
 }
 // 4ª: Añadir de la lista de favoritas
 
@@ -124,8 +136,13 @@ function addToFavorites(ev) {
   } else if (foundSerie.id !== clickedSerie.id) {
     favoriteSeries.push(clickedSerie);
   } else if (foundSerie.id === clickedSerie.id) {
-    foundSerie.classList.add('remove');
+    for (let i = 0; i < favoriteSeries.length; i++) {
+      if (foundSerie.id === favoriteSeries[i].id) {
+        favoriteSeries.splice(favoriteSeries[i], 1);
+      }
+    }
   }
+  paintFavorites();
 
   setLocalStorage();
 }
