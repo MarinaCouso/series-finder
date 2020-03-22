@@ -59,8 +59,13 @@ function addList(ev) {
           id: data[i].show.id
         });
       }
-
       paintSeries();
+      for (let i = 0; i < listSeries.length; i++) {
+        if (listSeries[i].id === favoriteSeries[i].id) {
+          listSeries[i].setAttribute('class', 'main__list__div__article reverseColor');
+          paintSeries();
+        }
+      }
       listenToList();
     });
 }
@@ -88,14 +93,15 @@ function listenToList() {
 }
 
 // BONUS: Limpiar lista favoritas
-// function listenToFavoriteRemoveAll() {
-//   // const btnRemoveAll = document.querySelector('.js-btnRemoveAll');
-//   // function cleanFavoriteList() {
-//   //   favoriteSeries = [];
-//   //   paintFavorites();
-//   // }
-//   // btnRemoveAll.addEventListener('click', cleanFavoriteList);
-// }
+function listenToFavoriteRemoveAll() {
+  const btnRemoveAll = document.querySelector('.js-btnRemoveAll');
+  function cleanFavoriteList() {
+    favoriteSeries = [];
+    paintFavorites();
+    setLocalStorage();
+  }
+  btnRemoveAll.addEventListener('click', cleanFavoriteList);
+}
 // 5ª: Pintar series en favoritas
 function paintFavorites() {
   favoritesSection.innerHTML = '';
@@ -110,7 +116,7 @@ function paintFavorites() {
   codeHTML += '<input class="js-btnRemoveAll div__btnRemoveAll" type="submit" value="Limpiar lista" />';
   favoritesSection.innerHTML += codeHTML;
   listenToFavoriteRemove();
-  // listenToFavoriteRemoveAll();
+  listenToFavoriteRemoveAll();
 }
 // 4ª: Añadir de la lista de favoritas
 
@@ -131,7 +137,7 @@ function addToFavorites(ev) {
   }
 
   if (foundSerie === undefined) {
-    ev.currentTarget.classList.add('reverseColor');
+    ev.currentTarget.setAttribute('class', 'main__list__div__article reverseColor');
     favoriteSeries.push(clickedSerie);
   } else if (foundSerie.id !== clickedSerie.id) {
     favoriteSeries.push(clickedSerie);
