@@ -10,11 +10,11 @@ const listSection = document.querySelector('.js-listSection');
 const form = document.querySelector('.js-form');
 const favoritesSection = document.querySelector('.js-favoritesSection');
 
-// 3. Funciones
-
 // -----
 
-// 6ª:  Guardar en localStorage (y añadir al principio leer localStorage)
+// 3. Funciones
+
+// -Guardar en localStorage (y añadir al principio leer localStorage)
 
 const getLocalStorage = () => {
   const favoriteSeriesString = localStorage.getItem('favorites');
@@ -29,7 +29,8 @@ const setLocalStorage = () => {
   localStorage.setItem('favorites', JSON.stringify(favoriteSeries));
   localStorage.setItem('list', JSON.stringify(listSeries));
 };
-// 1ª: Escuchar la búsqueda y obtener datos de la API
+
+// -Escuchar la búsqueda y obtener datos de la API
 
 function preventDefault(ev) {
   ev.preventDefault();

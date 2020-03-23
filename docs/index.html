@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"
+        />
+        <title>Document</title>
+        <link rel="stylesheet" href="./assets/css/main.css" />
+    </head>
+    
+    <body class="body">
+        <header class="body__header">
+             <h1>Buscador de series</h1> 
+        </header>
+        <main class="main">
+            <form class="js-form main__form" action="post">
+                <input class="js-inputSearch main__form__input" type="text" name="inputSearch"
+                id="inputSearch" placeholder="Nombre de la serie" />
+                <input class="js-btnSearch main__form__btn" type="submit" value="Search"
+                />
+            </form>
+            <section class="main__favorites">
+                 <h2 class="main__favorites__title">Mis series favoritas</h2> 
+                <div class="js-favoritesSection main__favorites__div"></div>
+            </section>
+            <section class="main__list">
+                 <h2 class="main__list__title">Listado de películas</h2> 
+                <div class="js-listSection main__list__div"></div>
+            </section>
+        </main>
+        <script type="text/javascript" src="./assets/js/main.js"></script>
+    </body>
+
+</html>
