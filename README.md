@@ -5,7 +5,7 @@
 ¡Hola githaberxs! Este código desarrolla un buscador sencillo de series. Permite hacer una selección de favoritas que se recordarán la próxima vez que entres en la página. ¡Un sueño hecho realidad!
 
 ## Dependencias
-Este proyecto utiliza ![Adalaber Starter Kit] (https://github.com/Adalab/Adalab-web-starter-kit) para su desarrollo. Puedes acceder a este Kit y toda su información en https://github.com/Adalab/Adalab-web-starter-kit.
+Este proyecto utiliza Adalaber Starter Kit para su desarrollo. Puedes acceder a este Kit y toda su información en https://github.com/Adalab/Adalab-web-starter-kit.
 
 ## Guía de inicio rápido
 Puedes probar esta web entrando en la GitPage que hemos habilitado para que puedas probarla: http://beta.adalab.es/modulo-2-evaluacion-final-MarinaCouso/
