@@ -12,7 +12,7 @@ const favoritesSection = document.querySelector('.js-favoritesSection');
 
 // -----
 
-// 3. Funciones
+// 2. Funciones
 
 // -Guardar en localStorage (y añadir al principio leer localStorage)
 
@@ -61,12 +61,11 @@ function addList(ev) {
         });
       }
       paintSeries();
-
       listenToList();
     });
 }
 
-// 2ª: Pintar listado de series
+// -Pintar listado de series
 
 function isInFavorites(id, arrayId) {
   for (let i = 0; i < arrayId.length; i++) {
@@ -85,7 +84,6 @@ function paintSeries() {
     } else {
       codeHTML += `<article class="js-article main__list__div__article" id="${listSeries[i].id}">`;
     }
-
     codeHTML += `<img src="${listSeries[i].image}" alt="Imagen de la serie ${listSeries[i].name}" />`;
     codeHTML += `<h3>${listSeries[i].name}</h3>`;
     codeHTML += `</article>`;
@@ -93,7 +91,7 @@ function paintSeries() {
   listSection.innerHTML += codeHTML;
 }
 
-// 3ª: Escuchar el click en la lista de series
+// -Escuchar el click en la lista de series
 
 function listenToList() {
   const articlesSeries = document.querySelectorAll('.js-article');
@@ -102,7 +100,7 @@ function listenToList() {
   }
 }
 
-// BONUS: Limpiar lista favoritas
+// -Limpiar lista favoritas
 function listenToFavoriteRemoveAll() {
   const btnRemoveAll = document.querySelector('.js-btnRemoveAll');
   function cleanFavoriteList() {
@@ -112,7 +110,7 @@ function listenToFavoriteRemoveAll() {
   }
   btnRemoveAll.addEventListener('click', cleanFavoriteList);
 }
-// 5ª: Pintar series en favoritas
+// -Pintar series en favoritas
 function paintFavorites() {
   favoritesSection.innerHTML = '';
   let codeHTML = '';
@@ -128,7 +126,8 @@ function paintFavorites() {
   listenToFavoriteRemove();
   listenToFavoriteRemoveAll();
 }
-// 4ª: Añadir de la lista de favoritas
+
+// -Añadir de la lista de favoritas
 
 let clickListId = [];
 function addToFavorites(ev) {
@@ -145,7 +144,6 @@ function addToFavorites(ev) {
       foundSerie = serie;
     }
   }
-
   if (foundSerie === undefined) {
     ev.currentTarget.classList.add('reverseColor');
     favoriteSeries.push(clickedSerie);
@@ -161,12 +159,10 @@ function addToFavorites(ev) {
     }
   }
   paintFavorites();
-
   setLocalStorage();
 }
-// 7ª: Quitar de la lista de favoritas
+// -Quitar de la lista de favoritas
 
-// Escuchar en la lista de favoritas
 function listenToFavoriteRemove() {
   const btnRemove = document.querySelectorAll('.js-btnRemove');
   for (const btn of btnRemove) {
@@ -176,7 +172,6 @@ function listenToFavoriteRemove() {
 
 function removeFavorites(ev) {
   let clickedBtnRemoveId = parseInt(ev.currentTarget.id);
-
   let clickedFavoriteSerie = {};
   for (let i = 0; i < favoriteSeries.length; i++) {
     if (i === clickedBtnRemoveId) {
@@ -193,7 +188,7 @@ function removeFavorites(ev) {
   setLocalStorage();
 }
 
-// 2. Listeners
+// 3. Listeners
 inputSearch.addEventListener('keyup', getValue);
 btnSearch.addEventListener('click', addList);
 form.addEventListener('click', preventDefault);
