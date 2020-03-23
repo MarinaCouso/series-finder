@@ -1,78 +1,37 @@
-![Adalab](_src/assets/images/logo-adalab-80px.png)
+![MarinaCouso](https://github.com/MarinaCouso)
 
-# Adalab web starter kit
+# BUSCADOR DE SERIES FAVORITAS
 
-Ahoy! Esta es nuestro Starter Kit en node/gulp para este primer contacto con el desarrollo web
-Incluye SCSS, un sistema de plantillas HTML y un web server.
+¡Hola githaberxs! Este código desarrolla un buscador sencillo de series. Permite hacer una selección de favoritas que se recordarán la próxima vez que entres en la página. ¡Un sueño hecho realidad!
+
+## Dependencias
+Este proyecto utiliza Adalaber Starter Kit (https://github.com/Adalab/Adalab-web-starter-kit) para su desarrollo. Puedes acceder a este Kit y toda su información en https://github.com/Adalab/Adalab-web-starter-kit.
 
 ## Guía de inicio rápido
+Para el uso de esta web sólo necesitarás entrar en la GitPage que hemos habilitado para que puedas probarla: http://beta.adalab.es/modulo-2-evaluacion-final-MarinaCouso/
 
-Necesitarás instalar [Node.js](https://nodejs.org/) y [Gulp](https://gulpjs.com) para trabajar con este Starter Kit, luego:
+(_info/ImagenWeb.png)
 
-1. Descarga o clona el repositorio
-2. Instala las dependencias locales con `npm install`
-3. Arranca el kit con `gulp`
+Como puedes observar, hay un buscador para insertar el nombre de la serie que quieres buscar. Si clickas "Search" se descargará en el apartado "Lista de series" todas las imágenes y títulos de las series que coincidan con tu búsqueda.
+Si seleccionas alguna de ellas clickando encima, ésta se añadirá a la columna izquierda, "Mis series favoritas" y se marcará en el listado con otro color, tal como aparece en la siguiente imagen:   
 
-## Espera, ¿esto se hace siempre?
+(_info/ImagenSearch.png)
 
-> ### Solo una vez al principio en cada ordenador que utilicemos:
+La próxima vez que entres a la web, tu selección de favoritas se habrá conservado, y podrás seguir añadiendo más siempre que quieras. 
 
-- Instalamos node
-- Instalamos el comando de gulp de forma global para poder usarlo desde cualquier carpeta usando `npm install --global gulp-cli`
+Si alguna de las series que tienes marcada como favorita deja de serlo, sólo tienes que clickar sobre el botón "X" que aparece a su derecha para eliminarla de la lista de series favoritas. También desaparecerá de ahí si, en la lista de búsqueda, vuelves a clickar sobre ella. 
+Por último, si quieres limpiar tu listado de series favoritas, sólo tienes que clickar el botón "Eliminar favoritas" que aparece al final.
 
-> ### Cada vez que descarguemos o clonemos un repo:
+## Espera, ¿cómo has hecho esto?
 
-- `npm install` para instalar los paquetes necesarios para convertir Sass a CSS, minizarlo, etc.
+Puedes ver la lógica que se ha seguido para desarrollar esta web en el flujo que recoge el recorrido que se produce en la página ante la intervención del/x usuarix: _info/flujo.jpg
 
-> ### Cada vez que estemos trabajando con nuestro código:
+Pongamos un ejemplo:
 
-- Desde nuestra terminal, ejecutamos el comando `gulp` para que realice la tarea por defecto, que en el caso del `gulpfile.js` que tenemos en adalab-web-starter-kit estará pendiente de nuestros archivos Sass, html y JavaScript y los compilará, minificará y/o recargará el servidor cada vez que hagamos un cambio
-
-## Tareas de gulp incluidas
-
-### Inicio de un web server para desarrollo
-
-```
-npm start
-```
-
-o lo que en este proyecto es lo mismo:
-
-```
-gulp
-```
-
-Lanza un webserver con BrowserSync y varios watchers estarán pendientes de los archivos SCSS/JS/HTML, en la carpeta **public/**, para recargar el navegador cuando se necesite.
-
-### Versión lista para subir a producción
-
-Para generar los ficheros para producción ejecuta:
-
-```
-npm run docs
-```
-
-o lo que en este proyecto es lo mismo:
-
-```
-gulp docs
-```
-
-En la carpeta **docs/** se generarán los CSS y JS minimizados y sin sourcemaps listos para subir al repo. A continuación súbelos al repo y activa en GitHub Pages la opción **master/docs/**, para que GitHub Pages sirva la página desde la carpeta **docs/**.
-
----
-
-Si quieres generar los ficheros listos para producción y además subirlos a GitHub directamente ejecuta el siguiente comando:
-
-```
-npm run push-docs
-```
-
-Este comando borra la carpeta **docs/**, la vuelve a generar, crea un commit con los nuevos ficheros y hace un `git push`, todo del tirón. ¿Cómo se te queda el cuerpo?. Si quieres saber cómo funciona échale un ojo al fichero `package.json`.
 
 ## Flujo de archivos con gulp
 
-Estas tareas de gulp producen el siguiente flujo de archivos:
+Debido al uso del Adalaber Starter Kit, gulp produce el siguiente flujo de archivos:
 
 ![Gulp flow](./gulp-flow.png)
 
@@ -85,40 +44,25 @@ La estructura de carpetas tiene esta pinta:
 ```
 /
 `- _src
-   |- api
-   |  |- data.json // para crearnos un servidor de datos local
    |- assets
-   |  |- icons
-   |  |- images
    |  |- js
-   |  `- scss
-   |     `- core
+         - main.js
+   |   |- scss
+         -main.scss
    |
    `- templates
-      `- partials
+      `- index.html
 
 ```
 
 ## HTML
 
-Viene incluído el paquete [**gulp-html-partial**](https://www.npmjs.com/package/gulp-html-partial) que nos va a permitir tener un sistema de plantillas html
-
-## Imágenes e iconos
-
-Tenemos en **\_src/** una carpeta para las imágenes del proyecto y una para los iconos como el favicon o los iconos de dispositivos móviles. Estos últimos se generan en la raíz de las carpetas **public/** y **docs/**
+El paquete [**gulp-html-partial**](https://www.npmjs.com/package/gulp-html-partial) que nos permite tener un sistema de plantillas html, pero en este caso no las hemos utilizado porque la estructura era muy sencilla.
 
 ## CSS
 
-Viene incluído el paquete [**gulp-combine-mq**](https://www.npmjs.com/package/gulp-combine-mq) que agrupa todas las mediaqueries al final del documento css.
+Viene incluído el paquete [**gulp-combine-mq**](https://www.npmjs.com/package/gulp-combine-mq) que agrupa todas las mediaqueries al final del documento css. El fichero main.css se crea de forma automática al desarrollar el equivalente en scss (main.scss).
 
-## JS
+## ¿Se te ocurre alguna mejora?
 
-Podemos usar parciales de JS: en el JSON de configuración, **config.json** especificamos los archivos JS que utilizamos y en el orden que deben procesarse.
-
-## ¿Cómo actualizo si tengo una versión anterior?
-
-En principio puedes descargar todos los archivos fuera de **\_src/** y sustituir los de tu proyecto. Además deberías replicar la estructura de carpetas dentro de **\_src/**.
-
-## Falta algo?
-
-Echas de menos que el kit haga algo en concreto? Pidelo sin problema a través de los Issues o si te animas a mejorarlo mándanos un PR :)
+¿Echas de menos que esta web tenga algo en concreto? Pidelo sin problema a través de los Issues o si te animas a mejorarlo mándanos un PR :)
