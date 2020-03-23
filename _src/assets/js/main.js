@@ -50,6 +50,7 @@ function getImage(serie) {
 }
 function addList(ev) {
   ev.preventDefault;
+  listSeries = [];
   fetch(`http://api.tvmaze.com/search/shows?q=${userSearch}`)
     .then(response => response.json())
     .then(data => {
@@ -121,7 +122,7 @@ function paintFavorites() {
     codeHTML += `<input class="js-btnRemove div__article__btnRemove" type="submit" value="x" id="${favoriteSeries[i].id}"/>`;
     codeHTML += `</article>`;
   }
-  codeHTML += '<input class="js-btnRemoveAll div__btnRemoveAll" type="submit" value="Limpiar lista" />';
+  codeHTML += '<input class="js-btnRemoveAll div__btnRemoveAll" type="submit" value="Eliminar favoritas" />';
   favoritesSection.innerHTML += codeHTML;
   listenToFavoriteRemove();
   listenToFavoriteRemoveAll();
