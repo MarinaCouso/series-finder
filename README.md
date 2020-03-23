@@ -12,12 +12,12 @@ Este proyecto utiliza Adalaber Starter Kit para su desarrollo. Puedes acceder a 
 
 Puedes probar esta web entrando en la GitPage que hemos habilitado para que puedas probarla: http://beta.adalab.es/modulo-2-evaluacion-final-MarinaCouso/
 
-(\_info/ImagenWeb.png)
+<img src="https://github.com/Adalab/modulo-2-evaluacion-final-MarinaCouso/blob/master/info/ImagenWeb.png" />
 
 Como puedes observar, hay un buscador para insertar el nombre de la serie que quieres buscar. Si clickas "Search" se descargará en el apartado "Lista de series" todas las imágenes y títulos de las series que coincidan con tu búsqueda.
 Si seleccionas alguna de ellas clickando encima, ésta se añadirá a la columna izquierda, "Mis series favoritas" y se marcará en el listado con otro color, tal como aparece en la siguiente imagen:
 
-(\_info/ImagenSearch.png)
+<img src="https://github.com/Adalab/modulo-2-evaluacion-final-MarinaCouso/blob/master/info/ImagenSearch.png" />
 
 La próxima vez que entres a la web, tu selección de favoritas se habrá conservado, y podrás seguir añadiendo más siempre que quieras.
 
